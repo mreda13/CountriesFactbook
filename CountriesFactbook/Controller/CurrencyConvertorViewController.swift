@@ -45,7 +45,6 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
         targetCurrencyField.delegate = self
         
         if  let base = UserDefaults.standard.string(forKey: "PreferredCurrency") {
-            print("base currency is \(base)")
             defaultCurrencyLabel.text = base
         }
         
@@ -60,9 +59,7 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         if baseCurrency != nil {
-            print("base curr is \(String(describing: baseCurrency))")
             defaultCurrencyLabel.text = baseCurrency
-            print("text should be \(String(describing: defaultCurrencyLabel.text))")
             getCurrencyRate()
         }
     }
@@ -80,14 +77,12 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
     
     //DELEGATE METHOD
     func pass(data: String) {
-        print("delegate method called with value \(data)")
         baseCurrency = data
         updateCurrency()
     }
     
     //HELPER METHODS
     func updateCurrency(){
-        print("updating currency to \(String(describing: baseCurrency))")
         if baseCurrency != nil {
             defaultCurrencyLabel.text = baseCurrency
             getCurrencyRate()
@@ -98,11 +93,9 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
         if loading {
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
-            print("Started animating")
         }
         else {
             activityIndicator.stopAnimating()
-            print("stopped animating")
             activityIndicator.isHidden = true
         }
         defaultCurrencyField.isEnabled = !loading
@@ -110,7 +103,6 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
     }
     
     func getCurrencyRate(){
-        print("getting currency")
         loading(true)
         if baseCurrency == nil {
             baseCurrency = UserDefaults.standard.string(forKey: "PreferredCurrency")

@@ -38,7 +38,6 @@ class CountriesTableViewController: UITableViewController {
     }
     
     func getCountryFromStorage(_ name:String)->Country? {
-        //print("searching for country \(name)")
         var country:Country?
         let fetchRequest:NSFetchRequest<Country> = Country.fetchRequest()
         let predicate:NSPredicate = NSPredicate(format: "name=%@", argumentArray: [name])
@@ -67,7 +66,7 @@ class CountriesTableViewController: UITableViewController {
         }
         else{
             APIHelper.getCountryInfo(name: name) { (countryResponse, error) in
-                if let error = error {
+                if error != nil {
                     DispatchQueue.main.async {
                         cell.activityIndicator.stopAnimating()
                         cell.activityIndicator.isHidden = true
@@ -76,7 +75,6 @@ class CountriesTableViewController: UITableViewController {
                         alertController.addAction(alertAction)
                         self.present(alertController, animated: true, completion: nil)
                     }
-                    //print(error)
                     return
                 }
                 guard let data = countryResponse else
@@ -93,9 +91,6 @@ class CountriesTableViewController: UITableViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    //print("populating country")
-                    //print(data.name)
-                    //print(CountriesAPIHelper.getOfficialName(data.name))
                     self.country.name = data.name
                     self.country.capital = data.capital
                     self.country.currencyName = data.currencies[0].name
@@ -115,7 +110,6 @@ class CountriesTableViewController: UITableViewController {
                     catch{
                         print(error)
                     }
-                    //print("Saved")
                     cell.activityIndicator.stopAnimating()
                     cell.activityIndicator.isHidden = true
                     self.setupDataForSegue()
@@ -169,7 +163,7 @@ class CountriesTableViewController: UITableViewController {
         selectedIndexPath = indexPath
         var name = countries[indexPath.section].value[indexPath.row]
         country.commonName = name
-        //For the below country names, slightly different names are required for the API to return the proper data for the country
+        //For the below country names, different names are required for the API to return the proper data for the country
         switch name {
         case "North Korea":
             name = "Korea (Democratic People's Republic of)"

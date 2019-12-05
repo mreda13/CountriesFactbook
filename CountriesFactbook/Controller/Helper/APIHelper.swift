@@ -22,11 +22,9 @@ class APIHelper {
             case .getCountryInfo(let country):
                 var URL = baseURL + "name/\(country)"
                 URL = URL + "?fields=name;capital;currencies;altSpellings;population;nativeName;languages"
-                //print(URL)
                 return URL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) ?? URL
             case .getCurrencyRates(let base, let target):
                 let URL = "https://free.currconv.com/api/v7/convert?q=\(base)_\(target)&compact=ultra&apiKey=7f86ba31914025ba57dd"
-                //print(URL)
                 return URL
             }
         }
@@ -56,11 +54,9 @@ class APIHelper {
         
         let request = URLRequest(url: APIHelper.Endpoints.getCurrencyRates(base:base,target: target ).url)
         
-        //print("getting called")
         taskForGetRequest(request: request) { (data, response, error) in
-            if error != nil {
-                completion(nil,error!)
-                //print("got error")
+            if let error = error {
+                completion(nil,error)
                 return
             }
             guard let data = data else {
@@ -73,7 +69,6 @@ class APIHelper {
                 completion(dict.first?.value,nil)
             }
             catch {
-                //print(error)
                 completion(nil,error)
                 return
             }
@@ -87,7 +82,6 @@ class APIHelper {
         
         taskForGetRequest(request: request) { (data, response, error) in
             if let error = error {
-                //print(error)
                 completion(nil,error)
                 return
             }
@@ -100,7 +94,6 @@ class APIHelper {
             
             do {
                 let jsonData = try decoder.decode(Array<CountryResponse>.self, from: data)
-                //print(jsonData)
                 if name == "India" || name == "United States"{
                     completion(jsonData[1],nil)
                     return
@@ -110,7 +103,6 @@ class APIHelper {
                 
             }
             catch{
-                //print(error)
                 completion(nil,error)
             }
         }

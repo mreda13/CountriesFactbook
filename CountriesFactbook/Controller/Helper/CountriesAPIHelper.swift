@@ -15,7 +15,6 @@ class CountriesAPIHelper {
     class func getCountryNames() -> [String]{
         
         var countries:[String] = []
-        //print("populating countries")
 
         for country in countriesDict {
             countries.append(country["common"]!)
@@ -25,7 +24,6 @@ class CountriesAPIHelper {
     
     class func getOfficialName(_ countryName:String) -> String{
         
-        //print(countryName)
         for country in countriesDict {
             if country["common"] == countryName {
                 return country["official"]!
