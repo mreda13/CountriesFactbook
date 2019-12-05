@@ -40,7 +40,7 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.pass(data: selectedCurrency ?? "AED")
+        
     }
     
     @IBAction func setDefaultCurrency(_ sender: Any) {
@@ -50,13 +50,17 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
             let alertAction = UIAlertAction(title: "Next", style: .default) { (_) in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CountriesTableViewController") as! CountriesTableViewController
                 let navController = UINavigationController(rootViewController: vc)
+                navController.modalPresentationStyle = .fullScreen
                 self.present(navController, animated: true, completion: nil)
             }
             alertController.addAction(alertAction)
             self.present(alertController, animated: true)
         }
         else {
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                self.delegate?.pass(data: self.baseCurrency ?? "AED")
+                UserDefaults.standard.set(self.baseCurrency, forKey: "PreferredCurrency")
+            })
         }
     }
     
@@ -71,9 +75,7 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
 
     //MARK: DELEGATE METHODS
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        baseCurrency = currencyCodes[row]
-        UserDefaults.standard.set(baseCurrency, forKey: "PreferredCurrency")
-        selectedCurrency = baseCurrency
+        baseCurrency = currencyCodes[row]        
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
