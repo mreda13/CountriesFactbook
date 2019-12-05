@@ -46,6 +46,7 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
     @IBAction func setDefaultCurrency(_ sender: Any) {
         if !UserDefaults.standard.bool(forKey: "didSetCurrency") {
             UserDefaults.standard.set(true, forKey: "didSetCurrency")
+            UserDefaults.standard.set(self.baseCurrency, forKey: "PreferredCurrency")
             let alertController = UIAlertController(title: "Done!", message: "You're all set! Press next to start using the app.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Next", style: .default) { (_) in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CountriesTableViewController") as! CountriesTableViewController
