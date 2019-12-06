@@ -12,13 +12,23 @@ import CoreData
 class CountriesTableViewController: UITableViewController {
     
     var countriesArray:[String] = []
+    var filteredCountries:[String] = []
     var countries:[(key: String, value: [String])] = []
     var country = Country(context: DataController.shared.viewContext)
     var selectedIndexPath:IndexPath?
     
+    let searchController = UISearchController(searchResultsController: nil)
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCountries()
+        setupSearch()
         tableView.delegate = self
         tableView.reloadData()
     }
@@ -35,6 +45,23 @@ class CountriesTableViewController: UITableViewController {
             countriesDictionary[key] = dict[key]
         }
         countries = countriesDictionary.sorted(by: { $0.0 < $1.0 })
+    }
+    
+    func setupSearch(){
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Countries"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
+    func filterContent(_ searchText: String) {
+        filteredCountries = countriesArray.filter { (name: String) -> Bool in
+                return name.lowercased().contains(searchText.lowercased())
+        }
+        filteredCountries.sort()
+        tableView.reloadData()
     }
     
     func getCountryFromStorage(_ name:String)->Country? {
@@ -127,18 +154,37 @@ class CountriesTableViewController: UITableViewController {
     // MARK: - UITableView data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return countries.count
+        if isFiltering {
+            return 1
+        }
+        else{
+            return countries.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries[section].value.count
+        if isFiltering {
+            return filteredCountries.count
+        }
+        else {
+            return countries[section].value.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return countries[section].key
+        if isFiltering {
+            return nil
+        }
+        else{
+            return countries[section].key
+        }
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if isFiltering{
+            return nil
+        }
+        
         var sections:[String] = []
         for index in 0...(countries.count-1) {
             sections.append(countries[index].key)
@@ -152,7 +198,12 @@ class CountriesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CountriesTableViewCell
-        cell.textLabel?.text = countries[indexPath.section].value[indexPath.row]
+        if isFiltering{
+            cell.textLabel?.text = filteredCountries[indexPath.row]
+        }
+        else{
+            cell.textLabel?.text = countries[indexPath.section].value[indexPath.row]
+        }
         cell.activityIndicator.isHidden = true
         return cell
     }
@@ -161,7 +212,13 @@ class CountriesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
-        var name = countries[indexPath.section].value[indexPath.row]
+        var name:String
+        if isFiltering {
+            name = filteredCountries[indexPath.row]
+        }
+        else{
+            name = countries[indexPath.section].value[indexPath.row]
+        }
         country.commonName = name
         //For the below country names, different names are required for the API to return the proper data for the country
         switch name {
@@ -176,5 +233,14 @@ class CountriesTableViewController: UITableViewController {
         }
 
         getCountryInfo(name)
+    }
+}
+
+//MARK: EXTENSION
+
+extension CountriesTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContent(searchBar.text!)
     }
 }
