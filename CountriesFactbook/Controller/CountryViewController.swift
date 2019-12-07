@@ -15,6 +15,8 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
     @IBOutlet weak var titleNavItem: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var currConverterButton: UIButton!
+    @IBOutlet weak var moreInfoButton: UIButton!
+    
     
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     
@@ -41,6 +43,24 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
         }
     }
     
+    @IBAction func moreInfoPressed(_ sender: Any) {
+        var name = country.name
+        
+        switch name {
+        case "Korea (Democratic People's Republic of)":
+            name = "North Korea"
+        case "Congo":
+            name = "Congo-Brazzaville"
+        default:
+            break
+        }
+
+        let encodedName = name?.replacingOccurrences(of: " ", with: "_").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        if let url = URL(string: "https://en.wikipedia.org/wiki/\(encodedName!)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
     //MARK:  - Helper Methods
     
     func formattedNumericString(number:Int64) -> String?{
@@ -54,6 +74,7 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
         flagImage.image = UIImage(named: country.name!)
         flagImage.layer.borderWidth = 1.0
         titleNavItem.title = country.commonName!
+        titleNavItem.rightBarButtonItem?.title = "test"
         var height:CGFloat = 5 * (44 + 28) + 28
         if let fN = country.fullName , let nN = country.nativeName, let capitalCity = country.capital, let langs = country.languages , let cC = country.currencyCode, let cN = country.currencyName{
             if fN == "" {
@@ -73,12 +94,13 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
         }
         
         buttonSetup(currConverterButton)
+        buttonSetup(moreInfoButton)
         
         tableHeightConstraint.constant = height
     }
     
     func buttonSetup(_ button:UIButton){
-        button.layer.cornerRadius = 4
+        button.layer.cornerRadius = 18
     }
     
     //MARK: - UITableView data source

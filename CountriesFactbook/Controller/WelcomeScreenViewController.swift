@@ -15,6 +15,6 @@ class WelcomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        button.layer.cornerRadius = 4.0
+        button.layer.cornerRadius = 18.0
     }
 }
