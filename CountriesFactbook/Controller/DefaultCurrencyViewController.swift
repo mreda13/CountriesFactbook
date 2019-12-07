@@ -31,7 +31,7 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
         currencyPicker.layer.borderColor = UIColor.black.cgColor
         currencyPicker.layer.borderWidth = 2.0
         currencyPicker.layer.cornerRadius = 4.0
-        button.layer.cornerRadius = 4.0
+        button.layer.cornerRadius = 18.0
         
         if !UserDefaults.standard.bool(forKey: "didLaunchBefore"){
             UserDefaults.standard.set(true, forKey: "didLaunchBefore")

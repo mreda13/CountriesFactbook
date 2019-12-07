@@ -11,13 +11,13 @@
         <!--Countries-->
         <scene sceneID="v2v-z7-ubN">
             <objects>
-                <tableViewController storyboardIdentifier="CountriesTableViewController" id="FoI-uV-Eni" customClass="CountriesTableViewController" customModule="CountriesFactbook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CountriesTableViewController" id="FoI-uV-Eni" customClass="CountriesTableViewController" customModule="Countries_Factbook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Bz-CV-sOD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="qFL-fy-CkU" customClass="CountriesTableViewCell" customModule="CountriesFactbook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="qFL-fy-CkU" customClass="CountriesTableViewCell" customModule="Countries_Factbook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="42.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qFL-fy-CkU" id="NoP-Rf-A4e">
@@ -53,7 +53,7 @@
         <!--Title-->
         <scene sceneID="4Fd-jd-WuV">
             <objects>
-                <viewController storyboardIdentifier="CountryViewController" id="pKz-ED-SAH" customClass="CountryViewController" customModule="CountriesFactbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryViewController" id="pKz-ED-SAH" customClass="CountryViewController" customModule="Countries_Factbook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sjF-wB-BRS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                                 <rect key="frame" x="0.0" y="244" width="414" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ7-mq-VsI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="479"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r5Z-o6-857">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="413"/>
@@ -105,7 +105,6 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Xlg-1i-sYi" secondAttribute="bottom" constant="20" id="3NI-SM-CHd"/>
                                             <constraint firstItem="r5Z-o6-857" firstAttribute="top" secondItem="tZ7-mq-VsI" secondAttribute="top" id="8dH-hz-GOB"/>
                                             <constraint firstItem="Xlg-1i-sYi" firstAttribute="leading" secondItem="tZ7-mq-VsI" secondAttribute="leading" constant="20" id="MCb-NF-QmR"/>
                                             <constraint firstAttribute="trailing" secondItem="Xlg-1i-sYi" secondAttribute="trailing" constant="20" id="fQd-vm-wA7"/>
@@ -114,10 +113,25 @@
                                             <constraint firstItem="Xlg-1i-sYi" firstAttribute="top" secondItem="r5Z-o6-857" secondAttribute="bottom" constant="10" id="jqG-0o-mkK"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0h-rn-Xv1">
+                                        <rect key="frame" x="20" y="469" width="374" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="MORE INFO">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="moreInfoPressed:" destination="pKz-ED-SAH" eventType="touchUpInside" id="ogD-3j-6Ur"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tZ7-mq-VsI" secondAttribute="trailing" id="7L8-Kc-CXb"/>
+                                    <constraint firstItem="L0h-rn-Xv1" firstAttribute="top" secondItem="Xlg-1i-sYi" secondAttribute="bottom" constant="10" id="AR2-fB-IV1"/>
                                     <constraint firstAttribute="bottom" secondItem="tZ7-mq-VsI" secondAttribute="bottom" id="CFg-Sj-DOR"/>
+                                    <constraint firstAttribute="bottom" secondItem="L0h-rn-Xv1" secondAttribute="bottom" constant="10" id="M5P-s5-63q"/>
+                                    <constraint firstAttribute="trailing" secondItem="L0h-rn-Xv1" secondAttribute="trailing" constant="20" id="Nrt-vu-IaJ"/>
+                                    <constraint firstItem="L0h-rn-Xv1" firstAttribute="leading" secondItem="fdD-vF-F8t" secondAttribute="leading" constant="20" id="aPZ-dL-9eq"/>
                                     <constraint firstItem="tZ7-mq-VsI" firstAttribute="leading" secondItem="fdD-vF-F8t" secondAttribute="leading" id="bSS-pZ-KCe"/>
                                     <constraint firstItem="tZ7-mq-VsI" firstAttribute="top" secondItem="fdD-vF-F8t" secondAttribute="top" id="tv6-ST-0Ya"/>
                                 </constraints>
@@ -142,6 +156,7 @@
                     <connections>
                         <outlet property="currConverterButton" destination="Xlg-1i-sYi" id="9Qe-aP-oSl"/>
                         <outlet property="flagImage" destination="9nv-AO-NhO" id="mGM-ju-3fH"/>
+                        <outlet property="moreInfoButton" destination="L0h-rn-Xv1" id="rZh-rU-4Sp"/>
                         <outlet property="tableHeightConstraint" destination="WBL-L4-3Ao" id="uxf-wl-roa"/>
                         <outlet property="tableView" destination="r5Z-o6-857" id="cqx-km-ozJ"/>
                         <outlet property="titleNavItem" destination="Ou1-W8-xIc" id="Ikq-zB-gxL"/>
@@ -154,7 +169,7 @@
         <!--Currency Convertor View Controller-->
         <scene sceneID="rYL-It-532">
             <objects>
-                <viewController id="hjP-4p-Us9" customClass="CurrencyConvertorViewController" customModule="CountriesFactbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hjP-4p-Us9" customClass="CurrencyConvertorViewController" customModule="Countries_Factbook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cWe-od-4oU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,9 +266,9 @@
         <!--Default Currency View Controller-->
         <scene sceneID="Jqe-Ta-03n">
             <objects>
-                <viewController restorationIdentifier="DefaultCurrencyViewController" storyboardIdentifier="DefaultCurrencyViewController" id="ZWM-H9-flv" customClass="DefaultCurrencyViewController" customModule="CountriesFactbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DefaultCurrencyViewController" storyboardIdentifier="DefaultCurrencyViewController" id="ZWM-H9-flv" customClass="DefaultCurrencyViewController" customModule="Countries_Factbook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uRs-aL-IM9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4C-Bk-sli">
@@ -323,7 +338,7 @@
         <!--Welcome Screen View Controller-->
         <scene sceneID="8YE-5w-xHe">
             <objects>
-                <viewController storyboardIdentifier="WelcomeScreenViewController" id="dzL-3q-IbK" customClass="WelcomeScreenViewController" customModule="CountriesFactbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeScreenViewController" id="dzL-3q-IbK" customClass="WelcomeScreenViewController" customModule="Countries_Factbook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x3Z-NC-yvV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -403,6 +418,6 @@ You can change the currency later.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7DN-4Z-yWL"/>
+        <segue reference="MSu-Lx-auy"/>
     </inferredMetricsTieBreakers>
 </document>
