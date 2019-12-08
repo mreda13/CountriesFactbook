@@ -51,6 +51,7 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
         targetCurrencyLabel.text = targetCurrency
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        updateCurrencyButton.layer.cornerRadius = 18.0
 
         getCurrencyRate()
     }

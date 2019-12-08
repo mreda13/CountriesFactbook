@@ -37,13 +37,15 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "currencyConvertor" {
-            
             let vc = segue.destination as! CurrencyConvertorViewController
             vc.targetCurrency = currencyCode
         }
     }
     
     @IBAction func moreInfoPressed(_ sender: Any) {
+        
+        //TODO: ADD ERROR WHEN NO INTERNET
+        
         var name = country.name
         switch name {
         case "Korea (Democratic People's Republic of)":
