@@ -228,6 +228,10 @@ class CountriesTableViewController: UITableViewController {
             name = "Korea (Republic of)"
         case "Republic of the Congo":
             name = "Congo-Brazzaville"
+        case "North Macedonia":
+            name = "Macedonia"
+        case "Sudan":
+            name = "Republic of the Sudan"
         default:
             break;
         }

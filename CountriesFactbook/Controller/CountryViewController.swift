@@ -45,12 +45,15 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
     
     @IBAction func moreInfoPressed(_ sender: Any) {
         var name = country.name
-        
         switch name {
         case "Korea (Democratic People's Republic of)":
             name = "North Korea"
         case "Congo":
             name = "Congo-Brazzaville"
+        case "Ireland":
+            name = "Republic of Ireland"
+        case "Georgia":
+            name = "Georgia country"
         default:
             break
         }
