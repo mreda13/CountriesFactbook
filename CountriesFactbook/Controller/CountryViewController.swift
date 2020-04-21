@@ -13,12 +13,11 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
     
     @IBOutlet weak var flagImage: UIImageView!
     @IBOutlet weak var titleNavItem: UINavigationItem!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var currConverterButton: UIButton!
     @IBOutlet weak var moreInfoButton: UIButton!
     
-    
-    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     
     var country:Country!
     var fullName:String?
@@ -31,8 +30,8 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
         layoutSetup()
+        setupText()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,7 +79,7 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
         flagImage.layer.borderWidth = 1.0
         titleNavItem.title = country.commonName!
         titleNavItem.rightBarButtonItem?.title = "test"
-        var height:CGFloat = 5 * (44 + 28) + 28
+
         if let fN = country.fullName , let nN = country.nativeName, let capitalCity = country.capital, let langs = country.languages , let cC = country.currencyCode, let cN = country.currencyName{
             if fN == "" {
                 fullName = country.name
@@ -95,17 +94,55 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
             capital = capitalCity
             population = country.population
             
-            height = height + CGFloat(langs.count * 44)
         }
-        
         buttonSetup(currConverterButton)
         buttonSetup(moreInfoButton)
-        
-        tableHeightConstraint.constant = height
     }
     
     func buttonSetup(_ button:UIButton){
         button.layer.cornerRadius = 18
+    }
+    
+    func setupText(){
+        
+        for i in 0...5 {
+            let view = InfoSectionView()
+            var title:String
+            var text: String?
+            switch i {
+            case 0:
+                title = "Full Name"
+                text = fullName
+            case 1:
+                title = "Native Name"
+                text = nativeName
+            case 2:
+                title = "Capital City"
+                text = capital
+            case 3:
+                title = "Population"
+                text = formattedNumericString(number: population ?? 0)
+            case 4:
+                title = "Languages"
+                text = languages?[0]
+            case 5:
+                title = "Currency"
+                text = "\(currencyName ?? "N/A") (\(currencyCode ?? "N/A"))"
+            default:
+                title = "N/A"
+                text = "N/A"
+            }
+            view.sectionTitle.text = title
+            view.sectionText.text = text
+            
+            stackView.addArrangedSubview(view)
+            
+            view.contentView.snp.makeConstraints { (make) in
+                make.top.equalToSuperview()
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+            }
+        }
     }
     
     //MARK: - UITableView data source
