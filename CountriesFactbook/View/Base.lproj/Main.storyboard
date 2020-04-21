@@ -27,15 +27,36 @@
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-kQ-paM">
                                             <rect key="frame" x="374" y="11" width="20" height="20.5"/>
                                         </activityIndicatorView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B6I-B9-4JQ">
+                                            <rect key="frame" x="5" y="5" width="50" height="32.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="NmV-CF-F8V"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W47-hW-SR9">
+                                            <rect key="frame" x="60" y="5" width="309" height="32.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="SH3-kQ-paM" firstAttribute="top" secondItem="NoP-Rf-A4e" secondAttribute="topMargin" id="7q8-TT-c0A"/>
+                                        <constraint firstAttribute="bottom" secondItem="B6I-B9-4JQ" secondAttribute="bottom" constant="5" id="7wn-0N-0Gv"/>
+                                        <constraint firstItem="B6I-B9-4JQ" firstAttribute="top" secondItem="NoP-Rf-A4e" secondAttribute="top" constant="5" id="Jt7-FD-h1e"/>
+                                        <constraint firstItem="SH3-kQ-paM" firstAttribute="leading" secondItem="W47-hW-SR9" secondAttribute="trailing" constant="5" id="gbU-5o-kQk"/>
+                                        <constraint firstItem="W47-hW-SR9" firstAttribute="leading" secondItem="B6I-B9-4JQ" secondAttribute="trailing" constant="5" id="irO-UD-rBb"/>
+                                        <constraint firstAttribute="bottom" secondItem="W47-hW-SR9" secondAttribute="bottom" constant="5" id="jBM-4W-jLB"/>
+                                        <constraint firstItem="B6I-B9-4JQ" firstAttribute="leading" secondItem="NoP-Rf-A4e" secondAttribute="leading" constant="5" id="ki1-52-Zem"/>
+                                        <constraint firstItem="W47-hW-SR9" firstAttribute="top" secondItem="NoP-Rf-A4e" secondAttribute="top" constant="5" id="rLr-J9-wof"/>
                                         <constraint firstItem="SH3-kQ-paM" firstAttribute="bottom" secondItem="NoP-Rf-A4e" secondAttribute="bottomMargin" id="ynO-eN-WR2"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="SH3-kQ-paM" secondAttribute="trailing" id="z4o-km-3bU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="activityIndicator" destination="SH3-kQ-paM" id="hda-ND-8DU"/>
+                                    <outlet property="countryName" destination="W47-hW-SR9" id="Oqd-Yp-k5k"/>
+                                    <outlet property="flagIcon" destination="B6I-B9-4JQ" id="9wm-28-qhg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

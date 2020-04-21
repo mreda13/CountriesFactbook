@@ -198,12 +198,16 @@ class CountriesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CountriesTableViewCell
+        let countryName:String
         if isFiltering{
-            cell.textLabel?.text = filteredCountries[indexPath.row]
+            
+            countryName = filteredCountries[indexPath.row]
         }
         else{
-            cell.textLabel?.text = countries[indexPath.section].value[indexPath.row]
+            countryName = countries[indexPath.section].value[indexPath.row]
         }
+        cell.countryName.text = countryName
+        cell.flagIcon.image = UIImage(named: countryName)
         cell.activityIndicator.isHidden = true
         return cell
     }

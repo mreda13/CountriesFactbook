@@ -10,6 +10,8 @@ import UIKit
 
 class CountriesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var flagIcon: UIImageView!
+    @IBOutlet weak var countryName: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {

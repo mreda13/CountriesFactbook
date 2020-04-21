@@ -108,23 +108,29 @@ class CountryViewController: UIViewController , UITableViewDelegate, UITableView
         for i in 0...5 {
             let view = InfoSectionView()
             var title:String
-            var text: String?
+            var text = ""
             switch i {
             case 0:
                 title = "Full Name"
-                text = fullName
+                text = fullName ?? ""
             case 1:
                 title = "Native Name"
-                text = nativeName
+                text = nativeName ?? ""
             case 2:
                 title = "Capital City"
-                text = capital
+                text = capital ?? ""
             case 3:
                 title = "Population"
-                text = formattedNumericString(number: population ?? 0)
+                text = formattedNumericString(number: population ?? 0) ?? ""
             case 4:
                 title = "Languages"
-                text = languages?[0]
+                if let languages = languages {
+                    for lang in languages {
+                        text += "\(lang), "
+                    }
+                    text.removeLast(2)
+                }
+
             case 5:
                 title = "Currency"
                 text = "\(currencyName ?? "N/A") (\(currencyCode ?? "N/A"))"
