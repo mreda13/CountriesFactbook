@@ -26,21 +26,23 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
         if UserDefaults.standard.string(forKey: "PreferredCurrency") == nil {
             UserDefaults.standard.set(currencyCodes[0], forKey: "PreferredCurrency")
         }
-        currencyPicker.delegate = self
-        currencyPicker.layer.backgroundColor = UIColor.white.cgColor
-        currencyPicker.layer.borderColor = UIColor.black.cgColor
-        currencyPicker.layer.borderWidth = 2.0
-        currencyPicker.layer.cornerRadius = 4.0
-        button.layer.cornerRadius = 18.0
-        
         if !UserDefaults.standard.bool(forKey: "didLaunchBefore"){
             UserDefaults.standard.set(true, forKey: "didLaunchBefore")
         }
+        currencyPicker.delegate = self
+        self.setupView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+    }
+    
+    private func setupView () {
+        currencyPicker.layer.backgroundColor = UIColor.white.cgColor
+        currencyPicker.layer.borderColor = UIColor.black.cgColor
+        currencyPicker.layer.borderWidth = 2.0
+        currencyPicker.layer.cornerRadius = 18.0
+        button.layer.cornerRadius = 18.0
     }
     
     @IBAction func setDefaultCurrency(_ sender: Any) {
@@ -87,4 +89,3 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
         return title
     }
 }
-

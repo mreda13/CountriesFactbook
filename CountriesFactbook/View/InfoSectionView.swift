@@ -11,8 +11,10 @@ import SnapKit
 
 class InfoSectionView: NibView {
 
-    @IBOutlet weak var sectionTitle: UILabel!
-    @IBOutlet weak var sectionText: UILabel!
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textView: UIView!
+    @IBOutlet weak var textLabel: UILabel!
     
     required init() {
         super.init(with: "InfoSectionView", and: .zero)
@@ -24,9 +26,12 @@ class InfoSectionView: NibView {
     }
     
     private func setupView(){
-        self.backgroundColor = .white
+        self.titleView.layer.cornerRadius = 18.0
+        self.textView.layer.cornerRadius = 18.0
+        
         self.snp.makeConstraints { (make) in
-            make.height.equalTo(55.0)
+            make.height.equalTo(100.0)
         }
     }
+
 }

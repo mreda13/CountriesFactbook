@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070F822524804CD0000C1DB9 /* CountryTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070F822424804CD0000C1DB9 /* CountryTabBarController.swift */; };
 		072354A822E0005900942272 /* CurrencyConvertorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072354A722E0005900942272 /* CurrencyConvertorViewController.swift */; };
 		072354AA22E3E25900942272 /* CountriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072354A922E3E25800942272 /* CountriesTableViewCell.swift */; };
 		07406F5122B5828D00B2A77D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07406F5022B5828D00B2A77D /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070F822424804CD0000C1DB9 /* CountryTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTabBarController.swift; sourceTree = "<group>"; };
 		072354A722E0005900942272 /* CurrencyConvertorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertorViewController.swift; sourceTree = "<group>"; };
 		072354A922E3E25800942272 /* CountriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewCell.swift; sourceTree = "<group>"; };
 		07406F4D22B5828C00B2A77D /* Countries Factbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Countries Factbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				07406F6722B5A1E500B2A77D /* CountryViewController.swift */,
 				07406F8122BDA5B700B2A77D /* DefaultCurrencyViewController.swift */,
 				072354A722E0005900942272 /* CurrencyConvertorViewController.swift */,
+				070F822424804CD0000C1DB9 /* CountryTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -171,7 +174,6 @@
 				B2D0D7BEDB85912DEAF9E5A9 /* Pods-CountriesFactbook.debug.xcconfig */,
 				E62B4195C54E043EB99ECB6B /* Pods-CountriesFactbook.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -307,6 +309,7 @@
 				07406F7122B5F3A400B2A77D /* Currency.swift in Sources */,
 				072354A822E0005900942272 /* CurrencyConvertorViewController.swift in Sources */,
 				07406F7C22B8667B00B2A77D /* CurrencyConversionResponse.swift in Sources */,
+				070F822524804CD0000C1DB9 /* CountryTabBarController.swift in Sources */,
 				072354AA22E3E25900942272 /* CountriesTableViewCell.swift in Sources */,
 				07406F8222BDA5B700B2A77D /* DefaultCurrencyViewController.swift in Sources */,
 				07F4AC94244E81C700ABF88C /* NibView.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SnapKit
 
 class CountriesTableViewController: UITableViewController {
     
@@ -51,6 +52,13 @@ class CountriesTableViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Countries"
+        searchController.searchBar.tintColor = UIColor.black
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.searchTextField.textColor = UIColor.black
+        } else {
+            let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+            textFieldInsideSearchBar?.textColor = UIColor.white
+        }
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
@@ -146,7 +154,7 @@ class CountriesTableViewController: UITableViewController {
     }
     
     func setupDataForSegue(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CountryViewController") as! CountryViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CountryTabBarController") as! CountryTabBarController
         vc.country = country
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -179,7 +187,25 @@ class CountriesTableViewController: UITableViewController {
             return countries[section].key
         }
     }
-
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        let label = UILabel()
+        label.text = tableView.numberOfSections == 1 ? "Matches" : countries[section].key
+        label.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+        
+        label.textColor = UIColor.white
+        headerView.addSubview(label)
+        headerView.backgroundColor = #colorLiteral(red: 0, green: 0.6616021991, blue: 0, alpha: 1)
+        label.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalTo(10.0)
+            make.trailing.equalToSuperview()
+        }
+        return headerView
+    }
+    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         if isFiltering{
             return nil
@@ -196,6 +222,7 @@ class CountriesTableViewController: UITableViewController {
         return index
     }
     
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CountriesTableViewCell
         let countryName:String
@@ -209,6 +236,9 @@ class CountriesTableViewController: UITableViewController {
         cell.countryName.text = countryName
         cell.flagIcon.image = UIImage(named: countryName)
         cell.activityIndicator.isHidden = true
+        let bg = UIView()
+        bg.backgroundColor = UIColor.blue
+        cell.selectedBackgroundView = bg
         return cell
     }
     
@@ -226,20 +256,19 @@ class CountriesTableViewController: UITableViewController {
         country.commonName = name
         //For the below country names, different names are required for the API to return the proper data for the country
         switch name {
-        case "North Korea":
-            name = "Korea (Democratic People's Republic of)"
-        case "South Korea":
-            name = "Korea (Republic of)"
-        case "Republic of the Congo":
-            name = "Congo-Brazzaville"
-        case "North Macedonia":
-            name = "Macedonia"
-        case "Sudan":
-            name = "Republic of the Sudan"
-        default:
-            break;
+            case "North Korea":
+                name = "Korea (Democratic People's Republic of)"
+            case "South Korea":
+                name = "Korea (Republic of)"
+            case "Republic of the Congo":
+                name = "Congo-Brazzaville"
+            case "North Macedonia":
+                name = "Macedonia"
+            case "Sudan":
+                name = "Republic of the Sudan"
+            default:
+                break;
         }
-
         getCountryInfo(name)
     }
 }

@@ -20,6 +20,62 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var targetCurrencyLabel: UILabel!
     @IBOutlet weak var updateCurrencyButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var preferredCurrView: UIView!
+    @IBOutlet weak var targetCurrView: UIView!
+    @IBOutlet weak var currencyContainerView: UIView!
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        defaultCurrencyField.delegate = self
+        targetCurrencyField.delegate = self
+        
+        if  let base = UserDefaults.standard.string(forKey: "PreferredCurrency") {
+            defaultCurrencyLabel.text = base
+        }
+        self.setupView()
+        getCurrencyRate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Currency Converter"
+        if baseCurrency != nil {
+            defaultCurrencyLabel.text = baseCurrency
+            getCurrencyRate()
+        }
+    }
+    
+    private func setupView(){
+        preferredCurrView.layer.cornerRadius = 18.0
+        targetCurrView.layer.cornerRadius = 18.0
+        
+        targetCurrencyLabel.text = targetCurrency
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        updateCurrencyButton.layer.cornerRadius = 18.0
+        currencyContainerView.layer.cornerRadius = 18.0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "updateCurrency" {
+            let vc = segue.destination as! DefaultCurrencyViewController
+            vc.delegate = self
+        }
+    }
+    
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
+    
+    //MARK: DELEGATE METHOD
+    
+    func pass(data: String) {
+        baseCurrency = data
+        updateCurrency()
+    }
+    
+    //MARK: IBAction
     
     @IBAction func defaultTextFieldChanged(_ sender: Any) {
         let formatter = NumberFormatter()
@@ -39,50 +95,7 @@ class CurrencyConvertorViewController: UIViewController , UITextFieldDelegate {
         defaultCurrencyField.text = "\(value)"
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        defaultCurrencyField.delegate = self
-        targetCurrencyField.delegate = self
-        
-        if  let base = UserDefaults.standard.string(forKey: "PreferredCurrency") {
-            defaultCurrencyLabel.text = base
-        }
-        
-        targetCurrencyLabel.text = targetCurrency
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        self.view.addGestureRecognizer(tap)
-        updateCurrencyButton.layer.cornerRadius = 18.0
-
-        getCurrencyRate()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if baseCurrency != nil {
-            defaultCurrencyLabel.text = baseCurrency
-            getCurrencyRate()
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "updateCurrency" {
-            let vc = segue.destination as! DefaultCurrencyViewController
-            vc.delegate = self
-        }
-    }
-    
-    @objc func dismissKeyboard(){
-        self.view.endEditing(true)
-    }
-    
-    //DELEGATE METHOD
-    func pass(data: String) {
-        baseCurrency = data
-        updateCurrency()
-    }
-    
-    //HELPER METHODS
+    //MARK: HELPER METHODS
     func updateCurrency(){
         if baseCurrency != nil {
             defaultCurrencyLabel.text = baseCurrency
