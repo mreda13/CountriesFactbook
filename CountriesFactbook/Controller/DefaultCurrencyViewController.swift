@@ -37,8 +37,10 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
         super.viewWillDisappear(animated)
     }
     
+    //colorLiteral(red: 0, green: 0.5649476647, blue: 1, alpha: 1)
+    
     private func setupView () {
-        currencyPicker.layer.backgroundColor = UIColor.white.cgColor
+        currencyPicker.layer.backgroundColor = #colorLiteral(red: 0, green: 0.5649476647, blue: 1, alpha: 1)
         currencyPicker.layer.borderColor = UIColor.black.cgColor
         currencyPicker.layer.borderWidth = 2.0
         currencyPicker.layer.cornerRadius = 18.0
@@ -85,7 +87,7 @@ class DefaultCurrencyViewController: UIViewController, UIPickerViewDelegate ,UIP
         
         let text = currencyCodes[row]
         
-        let title = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        let title = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         return title
     }
 }

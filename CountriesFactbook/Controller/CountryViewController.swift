@@ -131,14 +131,6 @@ class CountryViewController: UIViewController {
             view.textLabel.text = text
             
             stackView.addArrangedSubview(view)
-            
-            view.contentView.snp.makeConstraints { (make) in
-                make.leading.equalToSuperview()
-                make.trailing.equalToSuperview()
-            }
-        }
-        self.stackContainerView.snp.remakeConstraints { (make) in
-            make.height.equalTo(self.stackView.snp.height)
         }
     }
 }

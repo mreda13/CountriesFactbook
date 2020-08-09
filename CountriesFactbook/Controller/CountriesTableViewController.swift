@@ -235,10 +235,8 @@ class CountriesTableViewController: UITableViewController {
         }
         cell.countryName.text = countryName
         cell.flagIcon.image = UIImage(named: countryName)
+        cell.flagIcon.layer.borderWidth = 1.0
         cell.activityIndicator.isHidden = true
-        let bg = UIView()
-        bg.backgroundColor = UIColor.blue
-        cell.selectedBackgroundView = bg
         return cell
     }
     

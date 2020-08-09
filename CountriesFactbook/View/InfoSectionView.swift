@@ -30,7 +30,7 @@ class InfoSectionView: NibView {
         self.textView.layer.cornerRadius = 18.0
         
         self.snp.makeConstraints { (make) in
-            make.height.equalTo(100.0)
+            make.height.greaterThanOrEqualTo(100.0)
         }
     }
 

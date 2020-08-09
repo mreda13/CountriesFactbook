@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -18,58 +18,57 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="124"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fi5-NX-S1H">
-                    <rect key="frame" x="10" y="10" width="165.5" height="33.5"/>
+                    <rect key="frame" x="10" y="10" width="207" height="34"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgh-wc-omA">
-                            <rect key="frame" x="5" y="10" width="155.5" height="13.5"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <rect key="frame" x="10" y="5" width="187" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" red="0.082141536870000004" green="0.64961226130000005" blue="0.04508952904" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Xgh-wc-omA" secondAttribute="bottom" constant="10" id="5Uy-wG-lQP"/>
-                        <constraint firstItem="Xgh-wc-omA" firstAttribute="top" secondItem="Fi5-NX-S1H" secondAttribute="top" constant="10" id="FtM-MC-c7t"/>
-                        <constraint firstItem="Xgh-wc-omA" firstAttribute="leading" secondItem="Fi5-NX-S1H" secondAttribute="leading" constant="5" id="cA6-m1-rdb"/>
-                        <constraint firstAttribute="trailing" secondItem="Xgh-wc-omA" secondAttribute="trailing" constant="5" id="zuf-fa-D7A"/>
+                        <constraint firstAttribute="bottom" secondItem="Xgh-wc-omA" secondAttribute="bottom" constant="5" id="5Uy-wG-lQP"/>
+                        <constraint firstItem="Xgh-wc-omA" firstAttribute="top" secondItem="Fi5-NX-S1H" secondAttribute="top" constant="5" id="FtM-MC-c7t"/>
+                        <constraint firstItem="Xgh-wc-omA" firstAttribute="leading" secondItem="Fi5-NX-S1H" secondAttribute="leading" constant="10" id="cA6-m1-rdb"/>
+                        <constraint firstAttribute="trailing" secondItem="Xgh-wc-omA" secondAttribute="trailing" constant="10" id="zuf-fa-D7A"/>
                     </constraints>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9s-3s-WFl">
-                    <rect key="frame" x="15" y="53.5" width="384" height="20.5"/>
+                    <rect key="frame" x="15" y="54" width="384" height="55"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqK-jW-uC5">
-                            <rect key="frame" x="5" y="5" width="374" height="10.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="10" y="5" width="364" height="45"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="fqK-jW-uC5" firstAttribute="top" secondItem="j9s-3s-WFl" secondAttribute="top" constant="5" id="CSZ-sQ-l20"/>
                         <constraint firstAttribute="bottom" secondItem="fqK-jW-uC5" secondAttribute="bottom" constant="5" id="CwT-8I-UfV"/>
-                        <constraint firstItem="fqK-jW-uC5" firstAttribute="leading" secondItem="j9s-3s-WFl" secondAttribute="leading" constant="5" id="J7r-Ac-KSn"/>
-                        <constraint firstAttribute="trailing" secondItem="fqK-jW-uC5" secondAttribute="trailing" constant="5" id="qiB-i6-jSz"/>
+                        <constraint firstItem="fqK-jW-uC5" firstAttribute="leading" secondItem="j9s-3s-WFl" secondAttribute="leading" constant="10" id="J7r-Ac-KSn"/>
+                        <constraint firstAttribute="trailing" secondItem="fqK-jW-uC5" secondAttribute="trailing" constant="10" id="qiB-i6-jSz"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="j9s-3s-WFl" secondAttribute="trailing" constant="15" id="6Kb-Pt-rcP"/>
-                <constraint firstItem="Fi5-NX-S1H" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="G0r-4d-yoo"/>
+                <constraint firstItem="j9s-3s-WFl" firstAttribute="top" secondItem="Fi5-NX-S1H" secondAttribute="bottom" constant="10" id="CPJ-AT-niU"/>
+                <constraint firstAttribute="bottom" secondItem="j9s-3s-WFl" secondAttribute="bottom" constant="15" id="ETp-Hm-bwO"/>
                 <constraint firstItem="Fi5-NX-S1H" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Kw2-wx-b7z"/>
                 <constraint firstItem="j9s-3s-WFl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="LM8-vQ-bB3"/>
-                <constraint firstAttribute="bottom" secondItem="j9s-3s-WFl" secondAttribute="bottom" constant="10" id="LqV-UN-elX"/>
                 <constraint firstItem="Fi5-NX-S1H" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="awv-79-e6o"/>
-                <constraint firstItem="j9s-3s-WFl" firstAttribute="top" secondItem="Fi5-NX-S1H" secondAttribute="bottom" constant="10" id="dsN-og-W27"/>
-                <constraint firstItem="Fi5-NX-S1H" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="oIj-Uq-vKd"/>
+                <constraint firstItem="Fi5-NX-S1H" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="oIj-Uq-vKd"/>
+                <constraint firstItem="Fi5-NX-S1H" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.274194" id="yvA-eA-i5O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="137.68115942028987" y="155.35714285714286"/>
+            <point key="canvasLocation" x="137.68115942028987" y="141.29464285714286"/>
         </view>
     </objects>
 </document>
